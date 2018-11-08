@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>Mouse Painting</title>
+  <style>
+    canvas {
+      border: 1px solid #d3d3d3;
+      background-color: #f1f1f191;
+    }
+ 
+    body {
+      padding: 40px;
+    }
+  </style>
+</head>
+ 
+<body>
+  <canvas id="zachblitzcanvas" width="800px" height="500px"></canvas>
+ 
+  <script>
+
+    // Here I am defining the canvas as 800 x 500 //
+      
+    var canvas = document.querySelector("#zachblitzcanvas");
+    var context = canvas.getContext("2d");
+
+    // Here I am updating the mouse position and calling the Get Position function //
+
+    var canvasPos = getPosition(canvas);
+	var mouse_x = 0;
+    var mouse_y = 0;
+    
+    // This updates the color of ink and the size of pen when certain keys are pressed // 
+    
+	var color = 'black'
+    var radius = 15;
+
+    //  Draw X Mouse Position // 
+
+    function draw() {
+
+        context.beginPath();
+          
+        // Here I make sure that we are using a circle // 
+          
+  		context.arc(mouse_x, mouse_y, radius, 0, 2 * Math.PI, true);
+  		context.fillStyle = color;
+        context.fill();
+          
+  		// In order to make a drawing I keep going through the animation here // 
+  		requestAnimationFrame(draw);
+	}
+	
+ 	
+	canvas.addEventListener("mousemove", setMousePosition, false);
+	
+	function setMousePosition(e) {
+  		mouse_x = e.clientX - canvasPos.x;
+  		mouse_y = e.clientY - canvasPos.y;
+  	}
+    draw();
+    
+    // Get Position Function // 
+
+	function getPosition(motion) {
+  	var startx = 0;
+  	var starty = 0;
+ 
+  	while (motion) {
+    	startx += (motion.offsetLeft - motion.scrollLeft + motion.clientLeft);
+    	starty += (motion.offsetTop - motion.scrollTop + motion.clientTop);
+    	motion = motion.offsetParent;
+  	}
+  	return {
+    	x: startx,
+    	y: starty
+  	};
+}      
+
+    // Commands // 
+
+	window.addEventListener("keydown", keyPress, false);
+	function keyPress(e) {
+		switch(e.keyCode) {
+        
+        	case 66: 
+        	// Here we press b to make the color blue //
+            	color = 'blue'
+           
+            	break;
+        	case 71:
+        	// Here we press g to make the color blue //
+        		color = 'green'
+        	
+            	break;
+        	case 82:
+        	// Here we press r to make the color blue //
+        		color = 'red'
+            	break;
+	        case 89:
+	        // Here we press y to make the color blue //
+	        	color = 'yellow'
+	            break;
+	        case 38:
+	        	radius += 1;
+	        // Here we press the up arrow to make the pen size bigger //
+	            break;
+	        case 40:
+	        // Here we press the down arrow to make the pen size bigger //
+	        	radius -= 1;
+	            break;    
+	        case 32:
+	        	context.clearRect(0, 0, canvas.width, canvas.height);
+	            break;
+        }   
+    }
+	
+  </script>
+ 
+</body>
+ 
+</html>
