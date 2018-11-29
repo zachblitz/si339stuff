@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/lightbox.css">
+	<title>Lightbox Mexican Tacos</title>
+</head>
+<body>
+	<main>
+
+		<div class="controls">
+			<button type="button" class="control" data-filter="all">All</button>
+			<button type="button" class="control" data-filter=".goodtaco">Good Tacos</button>
+			<button type="button" class="control" data-filter=".badtaco">Bad Tacos</button>
+		</div>
+		
+		<div class = "gallery">
+			<a href="images/taco1.jpeg" data-lightbox="tacos" class="mix goodtaco" data-title="taco1"><img src="images/taco1.jpeg" alt="Taco 1"></a>
+			<a href="images/taco2.jpeg" data-lightbox="tacos" class="mix goodtaco" data-title="taco2"><img src="images/taco2.jpeg" alt="Taco 2"></a>
+			<a href="images/taco3.jpeg" data-lightbox="tacos" class="mix badtaco" data-title="taco3"><img src="images/taco3.jpeg" alt="Taco 3"></a>
+			<a href="images/taco4.jpeg" data-lightbox="tacos" class="mix goodtaco" data-title="taco4"><img src="images/taco4.jpeg" alt="Taco 4"></a>
+			<a href="images/taco5.jpeg" data-lightbox="tacos" class="mix badtaco" data-title="taco5"><img src="images/taco5.jpeg" alt="Taco 5"></a>
+			<a href="images/taco6.jpeg" data-lightbox="tacos" class="mix badtaco" data-title="taco6"><img src="images/taco6.jpeg" alt="Taco 6"></a>
+			<a href="images/taco7.jpeg" data-lightbox="tacos" class="mix badtaco" data-title="taco7"><img src="images/taco7.jpeg" alt="Taco 7"></a>
+			<a href="images/taco8.jpeg" data-lightbox="tacos" class="mix goodtaco" data-title="taco8"><img src="images/taco8.jpeg" alt="Taco 8"></a>
+			<a href="images/taco9.jpeg" data-lightbox="tacos" class="mix badtaco" data-title="taco9"><img src="images/taco9.jpeg" alt="Taco 9"></a>
+		</div>
+	</main>
+
+	<script src="js/lightbox.js"></script>
+	<script src="js/mixitup.min.js"></script>
+
+      <script>
+            var containerEl = document.querySelector('.gallery');
+            var mixer = mixitup(containerEl);
+      </script>
+
+</body>
+</html>
